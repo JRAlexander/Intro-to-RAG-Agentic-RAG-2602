@@ -13,6 +13,9 @@ class Settings:
     chroma_dir: str = os.getenv("CHROMA_DIR", "./data/processed/chroma")
     reset_index: str = os.getenv("RESET_INDEX", "0")
     top_k: str = os.getenv("TOP_K", "6")
+    openai_model: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
+    temperature: str = os.getenv("TEMPERATURE", "0")
+    max_context_chars: str = os.getenv("MAX_CONTEXT_CHARS", "10000")
 
 
 settings = Settings()
