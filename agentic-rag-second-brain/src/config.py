@@ -16,9 +16,16 @@ class Settings:
     openai_model: str = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     temperature: str = os.getenv("TEMPERATURE", "0")
     max_context_chars: str = os.getenv("MAX_CONTEXT_CHARS", "10000")
+    max_retries: str = os.getenv("MAX_RETRIES", "2")
+    recency_days: str = os.getenv("RECENCY_DAYS", "365")
+    evidence_min_recent_chunks: str = os.getenv("EVIDENCE_MIN_RECENT_CHUNKS", "1")
+    evidence_threshold: str = os.getenv("EVIDENCE_THRESHOLD", "0.65")
+    use_llm_grader: str = os.getenv("USE_LLM_GRADER", "0")
 
 
 settings = Settings()
+
+
 @dataclass(frozen=True)
 class Config:
     PROJECT_ROOT: Path
