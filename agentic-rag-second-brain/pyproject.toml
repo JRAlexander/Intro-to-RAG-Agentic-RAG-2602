@@ -6,13 +6,17 @@ readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Your Name" }]
 dependencies = [
-  "python-dotenv>=1.0.1",
-  "pydantic>=2.7.0",
-  "pydantic-settings>=2.2.1",
-  "pandas>=2.2.2",
-  "llama-index>=0.10.45",
-  "jupyterlab>=4.2.0",
-  "ipykernel>=6.29.4",
+  "python-dotenv==1.0.1",
+  "pydantic==2.10.6",
+  "pydantic-settings==2.7.1",
+  "pandas==2.2.3",
+  "llama-index==0.12.19",
+  "llama-index-embeddings-openai==0.3.1",
+  "llama-index-vector-stores-chroma==0.4.1",
+  "openai==1.61.1",
+  "chromadb==0.5.23",
+  "jupyterlab==4.3.5",
+  "ipykernel==6.29.5",
 ]
 
 [build-system]
