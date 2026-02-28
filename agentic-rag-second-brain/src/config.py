@@ -9,6 +9,10 @@ class Settings:
 
     raw_notes_dir: str = os.getenv("RAW_NOTES_DIR", "data/raw/notes")
     default_source_tag: str = os.getenv("DEFAULT_SOURCE_TAG", "second-brain")
+    embed_model: str = os.getenv("EMBED_MODEL", "text-embedding-3-small")
+    chroma_dir: str = os.getenv("CHROMA_DIR", "./data/processed/chroma")
+    reset_index: str = os.getenv("RESET_INDEX", "0")
+    top_k: str = os.getenv("TOP_K", "6")
 
 
 settings = Settings()

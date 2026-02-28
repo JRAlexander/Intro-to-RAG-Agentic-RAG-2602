@@ -101,3 +101,24 @@ Minimal setup for **Notebook 00 (setup)** and **Notebook 01 (dataset + ingestion
 ```bash
 python -c "from src.dataset import ensure_dataset_exists; ensure_dataset_exists()"
 ```
+
+## Notebook 02 prerequisites (Chroma indexing + persistence)
+
+Before running `notebooks/02_indexing_chroma_llamaindex.ipynb`, set your OpenAI API key:
+
+```bash
+export OPENAI_API_KEY="your-key"
+```
+
+Run notebooks in this order:
+1. `notebooks/00_setup.ipynb`
+2. `notebooks/01_dataset_and_ingestion_llamaindex.ipynb`
+3. `notebooks/02_indexing_chroma_llamaindex.ipynb`
+
+To force a clean rebuild of the persisted Chroma index, set:
+
+```bash
+export RESET_INDEX=1
+```
+
+Use `RESET_INDEX=0` (default) to reuse the existing persisted index for quicker reruns.
