@@ -1,13 +1,13 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
+from dataclasses import dataclass
 
 
-class Settings(BaseSettings):
-    """Runtime settings loaded from environment variables and .env."""
+@dataclass
+class Settings:
+    """Runtime settings loaded from environment variables."""
 
-    raw_notes_dir: str = "data/raw/notes"
-    default_source_tag: str = "second-brain"
-
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    raw_notes_dir: str = os.getenv("RAW_NOTES_DIR", "data/raw/notes")
+    default_source_tag: str = os.getenv("DEFAULT_SOURCE_TAG", "second-brain")
 
 
 settings = Settings()
