@@ -6,5 +6,9 @@ dependencies:
   - pip
   - jupyterlab
   - ipykernel
+  - pandas
   - pip:
-      - -e .
+      - python-dotenv
+      - pydantic
+      - pydantic-settings
+      - llama-index

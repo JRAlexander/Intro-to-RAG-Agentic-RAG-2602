@@ -1,17 +1,13 @@
-from dataclasses import dataclass
-from pathlib import Path
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-@dataclass(frozen=True)
-class Config:
-    PROJECT_ROOT: Path
-    DATA_RAW_NOTES_DIR: Path
-    DATA_PROCESSED_DIR: Path
+class Settings(BaseSettings):
+    """Runtime settings loaded from environment variables and .env."""
+
+    raw_notes_dir: str = "data/raw/notes"
+    default_source_tag: str = "second-brain"
+
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-config = Config(
-    PROJECT_ROOT=PROJECT_ROOT,
-    DATA_RAW_NOTES_DIR=PROJECT_ROOT / "data" / "raw" / "notes",
-    DATA_PROCESSED_DIR=PROJECT_ROOT / "data" / "processed",
-)
+settings = Settings()
