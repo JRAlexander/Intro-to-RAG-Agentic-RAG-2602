@@ -122,3 +122,36 @@ export RESET_INDEX=1
 ```
 
 Use `RESET_INDEX=0` (default) to reuse the existing persisted index for quicker reruns.
+
+
+## Notebook 05: Evaluation workflow
+
+This repo includes a lightweight, repeatable eval harness for comparing baseline and agentic RAG.
+
+### Artifacts
+- Golden dataset: `eval/golden_questions.jsonl`
+- Notebook: `notebooks/05_eval.ipynb`
+- Eval helpers: `src/eval.py` (and optional `src/eval_judge.py`)
+
+### Run
+1. Ensure the persisted index exists (`notebooks/02_indexing_chroma_llamaindex.ipynb`).
+2. Run baseline + agentic notebooks as needed (`03`, `04`) to validate your setup.
+3. Open and run `notebooks/05_eval.ipynb`.
+
+The notebook reports baseline vs agentic metrics for:
+- citation presence rate
+- citation validity rate (chunk IDs exist)
+- recency correctness rate (drift subset only)
+- average retries (agentic)
+- average latency per question
+
+It also prints a short top-failures section (3 examples) with query, retrieved doc titles/dates, answer, citations, and failed checks.
+
+### Optional LLM-as-judge
+By default, LLM judging is disabled.
+
+Set in `.env`:
+```bash
+USE_LLM_EVAL=1
+```
+When enabled, `run_eval` appends `llm_judge_score` and `llm_judge_rationale` columns via `src/eval_judge.py`.

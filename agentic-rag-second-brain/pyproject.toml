@@ -21,6 +21,7 @@ dependencies = [
   "langgraph==0.2.74",
   "jupyterlab==4.3.5",
   "ipykernel==6.29.5",
+  "tqdm==4.67.1",
 ]
 
 [build-system]
