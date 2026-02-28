@@ -1,0 +1,24 @@
+{"id":"drift-01","category":"drift","drift_topic":"embeddings","question":"What embedding model should we use by default right now?"}
+{"id":"drift-02","category":"drift","drift_topic":"embeddings","question":"Did the team stick with the early cost-first embedding choice or move to something else later?"}
+{"id":"drift-03","category":"drift","drift_topic":"embeddings","question":"As of the latest notes, is EmbedLite-v1 or EmbedPro-v2 the preferred default?"}
+{"id":"drift-04","category":"drift","drift_topic":"embeddings","question":"What changed between the January embedding decision and the later rollout notes?"}
+{"id":"drift-05","category":"drift","drift_topic":"embeddings","question":"For nuanced technical prompts today, what embedding direction is recommended?"}
+{"id":"drift-06","category":"drift","drift_topic":"chunking","question":"What chunking strategy should we use now for ingestion?"}
+{"id":"drift-07","category":"drift","drift_topic":"chunking","question":"Did we keep large 1200-char chunks, or was there a later policy change?"}
+{"id":"drift-08","category":"drift","drift_topic":"chunking","question":"What is the current default chunk size and overlap according to the newest decisions?"}
+{"id":"drift-09","category":"drift","drift_topic":"chunking","question":"Summarize how chunking recommendations evolved from early 2025 to later 2025."}
+{"id":"drift-10","category":"drift","drift_topic":"chunking","question":"For citation precision today, which chunking approach do the most recent notes support?"}
+{"id":"easy-01","category":"easy","question":"What did the onboarding meeting request for new contributors?"}
+{"id":"easy-02","category":"easy","question":"Which note says timeline-based comparisons were well received by stakeholders?"}
+{"id":"easy-03","category":"easy","question":"What follow-up was listed in the embedding rollout postmortem?"}
+{"id":"easy-04","category":"easy","question":"What did the hybrid retrieval research snippet recommend storing for later experiments?"}
+{"id":"easy-05","category":"easy","question":"What metadata fields were proposed in the metadata schema research note?"}
+{"id":"easy-06","category":"easy","question":"What cadence is mentioned for re-indexing in the chunking maintenance checklist?"}
+{"id":"easy-07","category":"easy","question":"What top issue was identified in the March search quality meeting?"}
+{"id":"easy-08","category":"easy","question":"What were next-quarter priorities in the roadmap notes?"}
+{"id":"easy-09","category":"easy","question":"Why did the team originally pick EmbedLite-v1 in January?"}
+{"id":"easy-10","category":"easy","question":"What potential chunking adjustment was suggested in the April pilot feedback?"}
+{"id":"easy-11","category":"easy","question":"What was the goal of using large chunks in the first chunking strategy?"}
+{"id":"amb-01","category":"ambiguity","should_clarify":true,"question":"Which recommendation should I follow?"}
+{"id":"amb-02","category":"ambiguity","should_clarify":true,"question":"Is the model decision still valid?"}
+{"id":"amb-03","category":"ambiguity","should_clarify":true,"question":"Should we keep the old setup or the new one?"}
