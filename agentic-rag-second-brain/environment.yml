@@ -1,0 +1,10 @@
+name: agentic-rag-second-brain
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - jupyterlab
+  - ipykernel
+  - pip:
+      - -e .
