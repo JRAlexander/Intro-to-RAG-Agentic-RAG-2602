@@ -1,16 +1,22 @@
-from pathlib import Path
+from __future__ import annotations
 
-from llama_index.core import Document
+from pathlib import Path
+from typing import TYPE_CHECKING, Dict, List
 
 from .config import settings
 
+if TYPE_CHECKING:
+    from llama_index.core import Document
 
-def load_note_documents(raw_notes_dir: str | None = None) -> list[Document]:
+
+def load_note_documents(raw_notes_dir: str | None = None) -> list["Document"]:
     """Load markdown/text notes into LlamaIndex Document objects."""
 
     notes_path = Path(raw_notes_dir or settings.raw_notes_dir)
     if not notes_path.exists():
         return []
+
+    from llama_index.core import Document
 
     documents: list[Document] = []
     for file_path in sorted(notes_path.glob("**/*")):
@@ -29,12 +35,6 @@ def load_note_documents(raw_notes_dir: str | None = None) -> list[Document]:
         )
 
     return documents
-from __future__ import annotations
-
-from pathlib import Path
-from typing import Dict, List
-
-from src.config import config
 
 
 NOTE_SPECS: List[Dict[str, object]] = [
@@ -153,7 +153,7 @@ def _render_note(spec: Dict[str, object]) -> str:
 
 
 def ensure_dataset_exists(force_rebuild: bool = False) -> Dict[str, object]:
-    notes_dir: Path = config.DATA_RAW_NOTES_DIR
+    notes_dir = Path(settings.raw_notes_dir)
     notes_dir.mkdir(parents=True, exist_ok=True)
 
     existing_markdown = sorted(notes_dir.glob("*.md"))
