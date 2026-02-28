@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import shutil
 from pathlib import Path
 from typing import Sequence
@@ -16,6 +17,29 @@ def _has_persisted_index(chroma_dir: Path, collection) -> bool:
     """Return True when persisted files and vectors both exist."""
 
     return chroma_dir.exists() and any(chroma_dir.iterdir()) and collection.count() > 0
+
+
+def _coerce_metadata_value(value):
+    """Convert metadata values to Chroma-compatible scalar types."""
+    if value is None or isinstance(value, (str, int, float)):
+        return value
+    if isinstance(value, (list, tuple, set)):
+        return ", ".join(str(item) for item in value)
+    if isinstance(value, dict):
+        return json.dumps(value, sort_keys=True)
+    return str(value)
+
+
+def _normalize_node_metadata(nodes: Sequence):
+    """Ensure each node has flat scalar metadata for Chroma insertion."""
+    normalized_nodes = []
+    for node in nodes:
+        metadata = getattr(node, "metadata", None)
+        if isinstance(metadata, dict):
+            for key, value in list(metadata.items()):
+                metadata[key] = _coerce_metadata_value(value)
+        normalized_nodes.append(node)
+    return normalized_nodes
 
 
 def build_or_load_index(nodes: Sequence, reset: bool, chroma_dir: Path, embed_model: str):
@@ -47,8 +71,9 @@ def build_or_load_index(nodes: Sequence, reset: bool, chroma_dir: Path, embed_mo
         )
         built = False
     else:
+        nodes = _normalize_node_metadata(list(nodes))
         index = VectorStoreIndex(
-            nodes=list(nodes),
+            nodes=nodes,
             storage_context=storage_context,
             embed_model=embed,
         )
